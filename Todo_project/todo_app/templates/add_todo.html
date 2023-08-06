@@ -1,0 +1,32 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'E:/Django/To_Do/Todo_project/todo_app/static/css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="back"><a href="/todo"> ← BACK</a></div>
+    <div class="add_container">
+        <div class="add_header">
+            <h1>Add ToDo</h1>
+        </div>
+        <div class="add_form">
+            <form action="add_todo" method="post">
+                {%csrf_token%}
+                Title : <input type="text" name="title"/><br><br>
+                <label for="Priority">Priority</label>
+                <select name="category" id="Priority">
+                    <option value="High Priority">High</option>
+                    <option value="Low Priority">Low</option>
+                </select><br><br>
+                Description:  <textarea rows="4" cols="50" name="desc"></textarea>
+                <br><br>
+                <button type="submit">Add Todo</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

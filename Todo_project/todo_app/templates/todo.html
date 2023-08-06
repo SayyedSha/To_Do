@@ -1,0 +1,104 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo_list</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'E:/Django/To_Do/Todo_project/todo_app/static/css/style.css' %}">
+    <script>
+        
+        let token = "{{ request.META.HTTP_AUTHORIZATION }}";
+
+function checkTokenAndToggle() {
+    // Get the JWT token from the Django template variable
+    console.log(token);
+    if (token) {
+        try {
+            let decodedToken = JSON.parse(atob(token.split('.')[1]));
+            console.log(decodedToken);
+            toggleCompleted();
+        } catch (error) {
+            window.location.href = '/?message=Please%20sign-in'; // Redirect to the login page with the message
+            console.log(error);
+        }
+    } else {
+        window.location.href = '/?message=Please%20sign-in'; // Redirect to the login page with the message
+    }
+}
+
+function toggleCompleted() {
+    
+    const incompleteTodos = document.getElementsByClassName('incomplete_todo');
+const completedTodos = document.querySelectorAll('.completed-todo');
+
+// Check if incompleteTodos elements exist
+if (incompleteTodos.length > 0) {
+    completedTodos.forEach(todo => {
+        if (todo.style.display === 'none') {
+            todo.style.display = 'block';
+            // Loop through each incomplete todo to hide them
+            for (let i = 0; i < incompleteTodos.length; i++) {
+                incompleteTodos[i].style.display = 'none';
+            }
+        } else {
+            todo.style.display = 'none';
+            // Loop through each incomplete todo to show them
+            for (let i = 0; i < incompleteTodos.length; i++) {
+                incompleteTodos[i].style.display = 'block';
+            }
+        }
+    });
+} else {
+    completedTodos.forEach(todo => {
+        if (todo.style.display === 'none') {
+            todo.style.display = 'block';
+        } else {
+            todo.style.display = 'none';
+        }
+    });
+}
+}
+
+
+        function logout() {
+            token='';
+          }
+          
+    </script>
+</head>
+<body>
+    <div class="todo_container">
+    <div class="todo_header">
+        <div class="todo_header_name">
+            <h3>Welcome</h3>
+            <h1>{{name}}</h1>
+        </div>
+        <div class="todo_header_btn">  
+            <a href="add_todo"><button>Add ToDo</button></a>
+            <a href="logout" onclick="logout()"><button >Logout</button></a>
+            <button onclick="checkTokenAndToggle()">Show Completed</button>
+        </div>     
+    </div>
+    <div class="todo_list">
+    {% for todo in li %}
+        {% if todo.Status == "Incomplete" %}
+        <div class="incomplete_todo" style="display: block;">
+            <h2>{{ todo.Title }} - {{ todo.category }} - {{ todo.Descbribe }} - {{ todo.Status }}</h2>
+            <button><a href="update/{{ todo.id }}">Update</a></button>
+            <button><a href="comp/{{ todo.id }}">Completed</a></button>
+            <button><a href="del/{{ todo.id }}">Delete</a></button>
+        </div>
+            <br>
+        {% else %}
+            <div class="completed-todo" style="display: none;">
+                <h2>Tittle:-{{ todo.Title }} <br>Priority:- {{ todo.category }} <br> {{ todo.Status }}</h2>
+                <br>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    </div>
+</div>
+</body>
+</html>

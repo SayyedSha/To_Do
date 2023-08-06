@@ -1,0 +1,34 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'E:/Django/To_Do/Todo_project/todo_app/static/css/style.css' %}">
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="back"><a href="/todo"> ← BACK</a></div>
+    <div class="update_container">
+        <div class="update header">
+            <h1>Update ToDo</h1>
+        </div>
+        <div class="update_form">
+            <form action="/update/{{ id }}/" method="post">
+                {% csrf_token %}
+                {% for todo in li %}
+                    Title: <input type="text" name="title" value="{{ todo.Title }}"><br><br>
+                    <label for="Priority">Priority</label>
+                    <select name="category" id="Priority">
+                        <option value="High Priority" {% if todo.category == 'High Priority' %} selected {% endif %}>High</option>
+                        <option value="Low Priority" {% if todo.category == 'Low Priority' %} selected {% endif %}>Low</option>
+                    </select><br><br>
+                    Description: <textarea rows="4" cols="50" name="desc">{{ todo.Descbribe }}</textarea><br><br>
+                {% endfor %}
+                <button type="submit">Update Todo</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

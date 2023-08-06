@@ -1,0 +1,35 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'E:/Django/To_Do/Todo_project/todo_app/static/css/style.css' %}">
+</head>
+<body>
+    <div class="sign-in_main-container">
+        <div class="sign-in_header">
+            <h1>Sign In</h1>
+        </div>
+        <div class="sigin-in_form">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.warning %} class="{{ message.warning }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="/" method="post">
+                {%csrf_token%}
+                <input type="email" name="email" placeholder="Email">
+                <br><br>
+                <input type="password" name="pass" placeholder="Password">
+                <br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <p>Dont Have an Account ? <a href="/reg">Register Now</a></p>
+    </div>
+</body>
+</html>

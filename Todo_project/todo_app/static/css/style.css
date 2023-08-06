@@ -1,0 +1,172 @@
+
+.sign-in_main-container{
+    
+    width: 45%;
+    margin: 10% 0% 0% 27%;
+    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%);
+    padding:2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #333;
+    text-align: center;
+}
+.sign-in_header{
+    color: white;
+}
+
+.sign-up_container{
+    
+    width: 45%;
+    margin: 10% 0% 0% 27%;
+    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%);
+    padding:2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #333;
+    text-align: center;
+}
+.sign-up_header{
+    color: white;
+}
+
+
+.todo_container{
+    background-color: rgb(196, 216, 216);
+    padding: 6px;
+}
+
+.todo_container.todo_header{
+    padding-left: 2%;
+}
+.todo_header{
+    max-width: 100%;
+    display: flex;
+    margin-left: 0%;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #7968d0;
+}
+
+.todo_list{
+        max-width: 90%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        /* background-color: #7968d0; */
+        margin-left: 3.2%;
+        text-align: center;
+        padding: 2%;
+}
+
+.todo_list .completed-todo{
+    margin-top: 1%;
+    border-radius: 25px;
+    padding: 2%;
+    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%)
+}
+
+
+.todo_list .incomplete_todo{
+    border-radius: 25px;
+    padding: 2%;
+    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%)
+}
+
+
+.update_container{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #9571c8;
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 25%;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #333;
+}
+
+.add_container{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #9571c8;
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 25%;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #333;
+}
+
+.back{
+    width: 6%;
+    padding: 0.3%;
+    border-radius: 10px;
+    background-color: #7968d0;
+    margin: 1%;
+    text-align: center;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(196, 216, 216);
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .messages li {
+    margin-bottom: 10px;
+  }
+  
+  .messages li.warning {
+    color: red;
+  }
+  
+  form {
+    margin: 0 auto;
+    width: 400px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea {
+    border-radius: 10px;
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .completed-todo {
+    display: none;
+  }
+  
+  @media (min-width: 500px) {
+    form {
+      width: 500px;
+    }
+  }
+  
