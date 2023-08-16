@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo_list</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'E:/Django/To_Do/Todo_project/todo_app/static/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
     <script>
         
         let token = "{{ request.META.HTTP_AUTHORIZATION }}";
@@ -76,23 +76,23 @@ if (incompleteTodos.length > 0) {
         </div>
         <div class="todo_header_btn">  
             <a href="add_todo"><button>Add ToDo</button></a>
-            <a href="logout" onclick="logout()"><button >Logout</button></a>
             <button onclick="checkTokenAndToggle()">Show Completed</button>
+            <a href="logout" onclick="logout()"><button >Logout</button></a>
         </div>     
     </div>
     <div class="todo_list">
     {% for todo in li %}
-        {% if todo.Status == "Incomplete" %}
+        {% if todo.Status == "Incomplete" or todo.Created_at|date:"Y-m-d" == today %}
         <div class="incomplete_todo" style="display: block;">
             <h2>{{ todo.Title }} - {{ todo.category }} - {{ todo.Descbribe }} - {{ todo.Status }}</h2>
-            <button><a href="update/{{ todo.id }}">Update</a></button>
-            <button><a href="comp/{{ todo.id }}">Completed</a></button>
-            <button><a href="del/{{ todo.id }}">Delete</a></button>
+            <a href="update/{{ todo.id }}"><button>Update</button></a>
+            <a href="comp/{{ todo.id }}"><button>Completed</button></a>
+            <a href="del/{{ todo.id }}"><button>Delete</button></a>
         </div>
             <br>
         {% else %}
             <div class="completed-todo" style="display: none;">
-                <h2>Tittle:-{{ todo.Title }} <br>Priority:- {{ todo.category }} <br> {{ todo.Status }}</h2>
+                <h2>Tittle:-{{ todo.Title }} <br>Priority:- {{ todo.category }} <br> {{ todo.Status }} <br> {{todo.Created_at}} <br> {{todo.Completed_at}}</h2>
                 <br>
             </div>
         {% endif %}

@@ -13,7 +13,7 @@
     color: white;
 }
 
-.sign-up_container{
+.sign-up_container{   
     
     width: 45%;
     margin: 10% 0% 0% 27%;
@@ -43,7 +43,7 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 25px;
-    background-color: #7968d0;
+    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%);
 }
 
 .todo_list{
@@ -59,7 +59,7 @@
     margin-top: 1%;
     border-radius: 25px;
     padding: 2%;
-    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%)
+    background: linear-gradient(246deg, #7968d0 0%, #9571c8 100%);
 }
 
 
@@ -149,9 +149,10 @@ body {
   
   button {
     background-color: #333;
-    color: white;
+    color: rgb(254, 254, 254);
     padding: 10px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
   }
   

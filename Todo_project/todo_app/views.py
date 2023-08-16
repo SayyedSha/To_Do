@@ -72,10 +72,16 @@ def auth(request):
         # print(sign)
 
         if len(sign)!=0:
-            if sign[0][4]==None:        
-                token=sign[0][2]
-                settoken(token)
-                return redirect("/todo")
+            if sign[0][4]==None:
+                ret_pass=res[0][4]#Retrivinf password from 4th column
+                # print(ret_pass)
+                if check_password(password,ret_pass):       
+                    token=sign[0][2]
+                    settoken(token)
+                    return redirect("/todo")
+                else:
+                    msg.warning(request,'Invalid Password')
+                    return render(request,'login.html') 
             else:
                 if len(res)!=0:
                     ret_id=res[0][0]#Retriving Id from 0th column
@@ -199,12 +205,12 @@ def todo_list(request):
            value=cursor.fetchall()
            cursor.nextset()
            todos = [
-            {'id':row[0],'Title': row[2], 'category': row[3], 'Descbribe': row[4], 'Status': row[5]}
+            {'id':row[0],'Title': row[2], 'category': row[3], 'Descbribe': row[4], 'Status': row[5],'Created_at':row[6],'Completed_at':row[7]}
             for row in value
             ]
            return render(request,'todo.html',{'li':todos,'name':name})
 
-        else:
+        else:   
             msg.warning(request,'Please Sign-in')
             return render(request,'login.html')
     else:

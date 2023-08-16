@@ -121,11 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 import os
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR /"E:/Django/To_Do/Todo_project/todo_app/static/css/style.css")
+    os.path.join(BASE_DIR /"C:/Users/Shahnawaz/Desktop/To_Do/To_Do/Todo_project/todo_app/static")
 ]
-
+# STATIC_ROOT ="C:\\Users\\Shahnawaz\\Desktop\\To_Do\\To_Do\\Todo_project\\todo_app\\static"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
